@@ -1,0 +1,67 @@
+show dbs
+use database
+db.database.drop()
+show database
+use studentMaster
+db.help()
+db.stats()
+mongod-version
+show collections
+db.collection.insert()
+db.collection.drop()
+
+queries:
+A.
+use studentMaster
+db.student.insert
+(
+{rollno:1,sname:"Shivkaran",grade:8,hobbies:["dancing","reading news"],doj:"20-02-2020"},
+{rollno:2,sname:"Ashish",grade:4,hobbies:["playing","reading","anime"],doj:"28-04-2018"},{rollno:3,sname:"Karan",grade:12,hobbies:["dancing","anime","chating"],doj:"07-03-2022"},{rollno:4,sname:"Jay",grade:10,hobbies:["playing","reading","movie"],doj:"23-11-2021"},{rollno:5,sname:"Dixit",grade:12,hobbies:["coding","gaming","movie"],doj:"25-12-2018"},{rollno:6,sname:"Parikshit",grade:12,hobbies:["dancing","photography"],doj:"01-04-2020"},{rollno:7,sname:"Abhi",grade:11,hobbies:["reading","coding"],doj:"30-06-2021"},{rollno:8,sname:"Meet",grade:5,hobbies:["chating","instruments"],doj:"12-01-2022"},{rollno:9,sname:"Chirag",grade:10,hobbies:["coding","cricket"],doj:"10-02-2022"},{rollno:10,sname:"Abhishek",grade:9,hobbies:["smiling","testing"],doj:"02-10-2019"},{rollno:11,sname:"Ajay rathod",grade:8,hobbies:["smiling","testing","flute"],doj:"21-12-2020"})
+db.student.insert({_id:1,rollno:12,sname:"sanskar",grade:12,hobbies:["trading","playing"],doj:"30-01-2018"})
+B.
+db.student.find({sname:"ajay rathod"}).pretty()
+
+C.
+db.student.find({},{_id:0}).pretty()
+
+D.
+db.student.find({},{sname:1,grade:1})
+
+E.
+db.student.find({_id:1},{sname:1,grade:1})
+
+F.
+db.student.update({},{$set:{"address":"navsari"}},false,true)
+												 ,upsert,multi
+G.
+db.student.find({grade:{$in:[10]}}).pretty()
+
+H.
+db.student.find({grade:{$nin:[10]}}).pretty()
+
+I.
+db.student.find({hobbies:{$in:["dancing","cricket"]}}).pretty()
+
+J.
+db.student.find({hobbies:{$nin:["dancing","cricket"]}}).pretty()
+
+K.
+db.student.find({sname:/^S/}).pretty()
+
+L.
+db.student.find({sname:/e/}).pretty()
+
+M.
+db.student.find({sname:/t$/}).pretty()
+
+N.
+db.student.find().count()
+
+O.
+db.student.find({grade:12}).count()
+
+P.
+db.student.find().sort({sname:1})
+
+Q.
+db.student.find().skip(db.student.count()-2).pretty()

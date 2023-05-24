@@ -1,0 +1,43 @@
+use store
+db.createCollection("sales")
+
+db.sales.insert({cid:100,cname:'shivkiran',gender:'female',cno:7894561230,city:'mumbai',odate:'25/02/2022',items:['mouse','processor','keyboard']})
+
+db.sales.insert({cid:101,cname:'karan',gender:'male',cno:9016108350,city:'navsari',odate:'30/10/2023',items:['memory','ssd','gpu','cpu','motherboard']})
+
+db.sales.insert({cid:102,cname:'ashishi',gender:'female',cno:6353287680,city:'ahmedabad',odate:'11/05/2023',items:['mousepad','cpu','monitor','keyboard','ram']})
+
+queries:
+a)
+db.sales.insert({cid:102,cname:'ashishi',gender:'female',cno:6353287680,city:'ahmedabad',odate:'20/12/2022',items:['apple','santra','cpu','monitor','keyboard','ram']})
+
+db.sales.insert({cid:102,cname:'ashishi',gender:'female',cno:6353287680,city:'ahmedabad',odate:'12/07/2023',items:['narangi','santra','kela','jamboo','chikoo']})
+
+db.sales.insert({cid:102,cname:'ashishi',gender:'female',cno:6353287680,city:'ahmedabad',odate:'28/02/2022',items:['kamalam','taropa','coconut','water melon','tomato]})
+
+db.sales.insert({cid:100,cname:'shivkiran',gender:'female',cno:7894561230,city:'mumbai',odate:'30/06/2022',items:['kakdi','mulo','palak','tindora','bhinda','gajar']})
+
+db.sales.insert({cid:100,cname:'shivkiran',gender:'female',cno:7894561230,city:'mumbai',odate:'1/02/2023',items:['nimboo','kapdicum','methi','potato']})
+
+db.sales.insert({cid:100,cname:'shivkiran',gender:'female',cno:7894561230,city:'mumbai',odate:'15/11/2023',items:['pant','shirt']})
+
+db.sales.insert({cid:101,cname:'karan',gender:'male',cno:9016108350,city:'navsari',odate:'20/10/2021',items:['pant','shirt','belt','glass','facewash']})
+
+db.sales.insert({cid:101,cname:'karan',gender:'male',cno:9016108350,city:'navsari',odate:'27/09/2023',items:['parleG','mug','maggie']})
+
+db.sales.insert({cid:101,cname:'karan',gender:'male',cno:9016108350,city:'navsari',odate:'12/05/2023',items:['glass','chana','atta']})
+
+b)
+db.sales.update({cname:'shivkiran'},{$set:{cno:7412589360}})
+
+c)
+db.sales.find({city:'ahmedabad'},{cid:1,cname:1,gender:1,cno:1}).pretty()
+
+d)
+db.sales.aggregate([{$group:{_id:"$city",customerCount:{$sum:1}}}])
+
+e)
+db.sales.mapReduce(function(){emit(this.cname,1)},function(cname,num){return Array.sum(num)},{out:'cname_count'})
+
+extra:
+db.sales.mapReduce(function(){emit(this.city,1)},function(city,num){return Array.sum(num)},{out:'city_count'})

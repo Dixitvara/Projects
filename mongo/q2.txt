@@ -1,0 +1,50 @@
+//record instertion 
+db.movie.insert({title:"ek_tha_tiger",director:"rahul rao",year:2015,actor:"salman khan"})
+db.movie.insert({title:"ek villan",director:"karan jorah",year:2014,actor:"sharaddha kapoor"})
+db.movie.insert({title:"lakshmi bomb",director:"mohit",year:2018,actor:"akshay kumar"})
+db.movie.insert({title:"phir hera pheri",director:"shivkaran",year:2010,actor:"paresh rawal"})
+db.movie.insert({title:"KGF",director:"nitesh",year:2021,actor:"yash"})
+db.movie.insert({title:"pathan",director:"sahil",year:2017,actor:"srk"})
+db.movie.insert({title:"pushpa",director:"rama raju",year:2021,actor:"allu arjun"})
+db.movie.insert({title:"Dj",director:"manish shah",year:2016,actor:"allu arjun"})
+db.movie.insert({title:"bhola",director:"farah",year:2022,actor:"ajay devgan"})
+db.movie.insert({title:"de dana dan",director:"mukesh",year:2015,actor:"jonny leavor"})
+db.movie.insert({title:"RRR",director:"rajamoli",year:2021,actor:"ram"})
+db.movie.insert({title:"RRR",director:"rajamoli",year:2021,actor:"NTR"})
+
+a)
+db.movie.find().pretty()
+
+b)
+db.movie.find({director:'sahil'}).pretty()
+
+c)
+db.movie.find({actor:/allu/}).pretty()
+
+d)
+db.movie.find({$or:[{year:{$lt:2016}},{year:{$gt:2020}}]}).pretty()
+
+e)
+
+f)
+
+g)
+db.movie.update({title:'de dana dan'},{$set:{actor:'sunil shetty'}})
+
+h)
+db.movie.find({title:/ek/}).pretty()
+
+i)
+db.movie.find({director:/rajamoli/}).pretty()
+
+j)
+db.movie.find({title:{$in:[/ek/]}, director:{$nin:['rajamoli']}}).pretty()
+
+k)
+db.movie.find({$or:[{title:/ek/},{title:/R/}]}).pretty()
+
+l)
+db.movie.find({title:{$in:[/ek/,/de/]}}).pretty()
+
+m)
+db.movie.remove({title:'pathan'})

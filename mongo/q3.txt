@@ -1,0 +1,28 @@
+use bookstore
+db.createCollection("books")
+
+//records
+
+db.books.insert({bookid:1,booktitle:"C",authors:["ebalaguru swami","shivkaran"],publicationyear:2013,publisher:"epic studio",bookprice:551})
+db.books.insert({bookid:2,booktitle:"java",authors:["james gosling","ashish"],publicationyear:2017,publisher:"oxford",bookprice:799})
+db.books.insert({bookid:3,booktitle:"php",authors:["rasmus lerdorf","karan"],publicationyear:2020,publisher:"arihant books",bookprice:600})
+db.books.insert({bookid:4,booktitle:"python",authors:["guido van rossum","jay"],publicationyear:2020,publisher:"roli books",bookprice:899})
+db.books.insert({bookid:5,booktitle:"javascript",authors:["brendan eich","jay"],publicationyear:2015,publisher:"rupa publications",bookprice:499})
+db.books.insert({bookid:6,booktitle:"c++",authors:["dennies riche","parikshit"],publicationyear:2019,publisher:"penguin house",bookprice:1001})
+db.books.insert({bookid:7,booktitle:"big data tools",authors:["rajnish","shivkaran"],publicationyear:2023,publisher:"jay publisher",bookprice:1199})
+db.books.insert({bookid:8,booktitle:"data structure",authors:["saziya saiyad","ashish"],publicationyear:2022,publisher:"karan production house",bookprice:999})
+db.books.insert({bookid:9,booktitle:"computer networks",authors:["hemina bhavsar","mohit"],publicationyear:2020,publisher:"dharma publications",bookprice:699})
+db.books.insert({bookid:10,booktitle:"flutter",authors:["dixit","rajamoli"],publicationyear:2021,publisher:"jay publisher",bookprice:2012})
+
+// queries
+
+b)
+db.books.update({booktitle:"python"},{$set:{booktitle:"python programming"}})
+
+c)
+db.books.find({$where:"this.authors.length<3"}).sort({publisher:1}).pretty()
+
+d)
+db.books.aggregate([{$group:{_id:"$publisher",noofbook:{$sum:1}}}])
+
+e)
